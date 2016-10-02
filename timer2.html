@@ -1,0 +1,26 @@
+<html><head><script>
+timer = null;
+
+onload=function(){
+	document.getElementById("startbutton").onclick=function(){
+		if(timer == null){
+			timer = setInterval("alert('hi')", 5000);
+		}else{
+			alert("timer is already running");
+		}
+	}
+	
+	document.getElementById("stopbutton").onclick=function(){
+		clearInterval(timer);
+		timer = null;
+	}
+}
+
+</script>
+</head>
+<body>
+<input type="button" id="startbutton" value="start"/>
+<input type="button" id="stopbutton" value="stop"/>
+
+</body>
+</html>

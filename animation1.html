@@ -1,0 +1,24 @@
+<html><head><script>
+onload=function(){
+	function move(){
+	
+		newPosition = parseInt(document.getElementById("i").style.left) + 10;
+		
+		imageWidth = document.getElementById("i").width;
+	
+		rightSidePosition = newPosition + imageWidth;
+	
+		if(rightSidePosition <= window.innerWidth){
+			document.getElementById("i").style.left = newPosition + "px";	
+		}else{
+			alert("no room");
+		}
+	}
+	document.getElementById("i").onclick=move;
+}
+</script>
+</head>
+<body>
+<img src="images/cat.jpg" id="i" style="position:absolute;left:15px" />
+</body>
+</html>

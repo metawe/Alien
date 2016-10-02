@@ -1,0 +1,36 @@
+<html><head><script>
+timer = null;
+function move(){
+		var cat = document.getElementById("i");
+		
+		var rightSide = parseInt(cat.style.left) + cat.width;
+		
+		if(rightSide < window.innerWidth){
+			cat.style.left = parseInt(cat.style.left) + 1 + "px";	
+		}else{
+			alert("boom");
+			clearInterval(timer);
+			timer = null;
+		}
+		
+		
+	}
+
+onload=function(){
+	
+	
+	document.getElementById("i").onclick=function(){
+		if(timer == null){
+			timer = setInterval("move()", 10);
+		}else{
+			clearInterval(timer);
+			timer = null;
+		}
+	}
+}
+</script>
+</head>
+<body>
+<img src="images/cat.jpg" id="i" style="position:absolute;left:15px" />
+</body>
+</html>

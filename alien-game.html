@@ -1,0 +1,37 @@
+<html><head><script>
+timer = null;
+index = 0;
+
+function move(){
+		var alien = document.getElementById("a");	
+		
+		index++;
+		index = index % 31;
+		
+		alien.src = "alien/alienrwalk" + index + ".gif";
+		
+		var rightSide = parseInt(alien.style.left) + alien.width;
+		if(rightSide < window.innerWidth){
+			alien.style.left = parseInt(alien.style.left) + 1 + "px";	
+		}else{
+			alert("boom");
+			clearInterval(timer);
+			timer = null;
+		}
+	}
+onload=function(){
+	document.getElementById("a").onclick=function(){
+		if(timer == null){
+			timer = setInterval("move()", 10);
+		}else{
+			clearInterval(timer);
+			timer = null;
+		}
+	}
+}
+</script>
+</head>
+<body>
+<img src="alien/alienrwalk0.gif" id="a" style="position:absolute;left:15px" />
+</body>
+</html>

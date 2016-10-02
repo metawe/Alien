@@ -1,0 +1,78 @@
+<html><head><script>
+timer = null;
+timerJump = null;
+index = 0;
+
+function moveRight(){
+		var alien = document.getElementById("a");	
+		
+		index++;
+		index = index % 31;
+		
+		alien.src = "alien/alienrwalk" + index + ".gif";
+		
+		var rightSide = parseInt(alien.style.left) + alien.width;
+		if(rightSide < window.innerWidth){
+			alien.style.left = parseInt(alien.style.left) + 3 + "px";	
+		}else{
+			alert("ouch");
+			clearInterval(timer);
+			timer = null;
+		}
+	}
+	
+function moveLeft(){
+	var alien = document.getElementById("a");
+	
+	index++;
+	index = index % 31;
+	
+	alien.src = "alien/alienlwalk" + index + ".gif";
+	
+	var leftSide = parseInt(alien.style.left);
+	if (leftSide > 0) {
+		alien.style.left = parseInt(alien.style.left) - 3 + "px";
+	} else {
+		alert("ouch");
+		clearInterval(timer);
+		timer = null;
+	}
+}
+
+function jump(){
+	var alien = document.getElementById("a");
+	
+	var topLocation = parseInt(alien.style.top);
+	
+	
+
+}
+	
+	function getMoveInfo(e){
+		keycode = null;
+		
+		if(e.event){
+			keycode = e.event;
+		}else if(e.which){
+			keycode = e.which;
+		}
+		
+		if(keycode == 39){
+			moveRight();
+		}else if(keycode == 37){
+			moveLeft();
+		}
+		if(keycode == 38){
+			jump();
+		}
+	}
+	
+	onload=function(){
+		window.onkeydown = getMoveInfo;
+	}
+</script>
+</head>
+<body>
+<img src="alien/alienrwalk0.gif" id="a" style="position:absolute;left:15px;top:150px" />
+</body>
+</html>
